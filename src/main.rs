@@ -4,10 +4,13 @@ use colored::Colorize;
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
+/// A simple, featureful and blazingly fast memory-safe alternative to 'rm' written in Rust.
 struct Args {
+    /// Recursively delete files and directories
     #[arg(short, long)]
     recursive: bool,
 
+    /// Don't try to preserve '~' or '/'
     #[arg(long)]
     no_preserve: bool,
 
