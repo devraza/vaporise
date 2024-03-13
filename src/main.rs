@@ -9,7 +9,7 @@ struct Args {
     recursive: bool,
 
     #[arg(long)]
-    no_preserve_root: bool,
+    no_preserve: bool,
 
     #[arg(trailing_var_arg = true, allow_hyphen_values = false)]
     targets: Vec<String>,
@@ -25,7 +25,7 @@ fn main() -> std::io::Result<()> {
     }
 
     for target in args.targets.iter() {
-        if args.no_preserve_root == false {
+        if args.no_preserve == false {
             if target == "/" || target == "~" {
                 println!("{} you're trying to delete an important directory ({})! specify '--no-preserve-root' if you really want to do this", "error:".red().bold(), target);
                 process::exit(0);
