@@ -6,7 +6,6 @@ authors = ["Muhammad Nauman Raza <devraza@skiff.com>"]
 description = "A simple, featureful and blazingly fast memory-safe alternative to 'rm' written in Rust."
 readme = "README.md"
 license = "MIT"
-license-file = "LICENSE.md"
 
 [dependencies]
 clap = { version = "4.5.2", features = ["derive"] }
