@@ -3,7 +3,7 @@ use clap::Parser;
 use colored::Colorize;
 
 #[derive(Parser, Debug)]
-#[command(version, about, long_about = None)]
+#[command(version, about, long_about = None, author)]
 /// A simple, featureful and blazingly fast memory-safe alternative to 'rm' written in Rust.
 struct Args {
     /// Recursively delete files and directories
