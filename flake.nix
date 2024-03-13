@@ -41,7 +41,7 @@
 
         # Used by `nix develop`
         devShells.default = pkgs.mkShell rec {
-          buildInputs = with pkgs.toolchain; [
+          buildInputs = with toolchain; [
             cargo rustc rust-src clippy rustfmt # rust components
           ];
           # Specify the rust-src path (many editors rely on this)
