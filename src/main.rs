@@ -8,6 +8,9 @@ struct Args {
     #[arg(short, long)]
     recursive: bool,
 
+    #[arg(long)]
+    no_preserve_root: bool,
+
     #[arg(trailing_var_arg = true, allow_hyphen_values = false)]
     targets: Vec<String>,
 }
@@ -20,8 +23,15 @@ fn main() -> std::io::Result<()> {
         println!("{} {}", "note:".cyan().bold(), "try 'vpr -h' for more information");
         process::exit(0);
     }
-    
+
     for target in args.targets.iter() {
+        if args.no_preserve_root == false {
+            if target == "/" || target == "~" {
+                println!("{} you're trying to delete an important directory ({})! specify '--no-preserve-root' if you really want to do this", "error:".red().bold(), target);
+                process::exit(0);
+            }
+        }
+        
         if path::Path::new(target).exists() {
             if fs::metadata(target).unwrap().is_dir() {
                 if args.recursive == false {
