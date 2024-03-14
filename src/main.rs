@@ -26,7 +26,7 @@ fn main() -> std::io::Result<()> {
     for target in args.targets.iter() {
         if args.no_preserve == false {
             if target == "/" || target == "~" {
-                println!("{} you're trying to delete an important directory ({})! specify '--no-preserve-root' if you really want to do this", "error:".red().bold(), target);
+                println!("{} you're trying to delete an important directory ({})! specify '{}' if you really want to do this", "error:".red().bold(), "--no-preserve".yellow(), target);
                 process::exit(0);
             }
         }
@@ -38,7 +38,7 @@ fn main() -> std::io::Result<()> {
                 let _ = fs::remove_file(target);
             }
         } else {
-            println!("{} {} {}", "error:".red().bold(), "the specified target does not exist:", target);
+            println!("{} {} {}", "error:".red().bold(), "the specified target does not exist:", target.yellow());
         }
     }
 
