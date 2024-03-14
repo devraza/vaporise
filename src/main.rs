@@ -6,10 +6,6 @@ use colored::Colorize;
 #[command(version, about, long_about = None, author)]
 /// A simple, featureful and blazingly fast memory-safe alternative to 'rm' written in Rust.
 struct Args {
-    /// Recursively delete files and directories
-    #[arg(short, long)]
-    recursive: bool,
-
     /// Don't try to preserve '~' or '/'
     #[arg(long)]
     no_preserve: bool,
@@ -37,12 +33,7 @@ fn main() -> std::io::Result<()> {
         
         if path::Path::new(target).exists() {
             if fs::metadata(target).unwrap().is_dir() {
-                if args.recursive == false {
-                    println!("{} could not remove directory {}, please specify '-r'", "error:".red().bold(), target);
-                    process::exit(0);
-                } else {
-                    let _ = fs::remove_dir_all(target);
-                }
+                let _ = fs::remove_dir_all(target);
             } else {
                 let _ = fs::remove_file(target);
             }
