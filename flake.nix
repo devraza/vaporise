@@ -32,12 +32,9 @@
           .buildRustPackage {
             pname = "vaporise";
             version = "0.2.1";
-            src = ./.;
             cargoLock.lockFile = ./Cargo.lock;
-
-            meta = {
-              mainProgram = "vpr";
-            };
+            meta.mainProgram = "vpr";
+            src = ./.;
           };
 
         # Executed by `nix run`
