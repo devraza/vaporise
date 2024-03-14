@@ -33,7 +33,7 @@
             pname = "vaporise";
             version = "0.2.1";
             cargoLock.lockFile = ./Cargo.lock;
-            meta.lib.mainProgram = "vpr";
+            meta.mainProgram = "vpr";
             src = ./.;
           };
 
