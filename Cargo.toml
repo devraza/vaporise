@@ -7,6 +7,13 @@ description = "A simple, featureful and blazingly fast memory-safe alternative t
 readme = "README.md"
 license = "MIT"
 
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+
 [dependencies]
 clap = { version = "4.5.2", features = ["derive"] }
 colored = "2.1.0"
