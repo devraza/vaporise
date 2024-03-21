@@ -17,18 +17,16 @@ struct Args {
 fn main() -> std::io::Result<()> {
     let args = Args::parse();
 
-    if args.targets.len() == 0 {
-        println!("{} {}", "error:".red().bold(), "no arguents passed");
-        println!("{} {}", "note:".cyan().bold(), "try 'vpr -h' for more information");
+    if args.targets.is_empty() {
+        println!("{} no arguments passed", "error:".red().bold());
+        println!("{} try 'vpr -h' for more information", "note:".cyan().bold());
         process::exit(0);
     }
 
     for target in args.targets.iter() {
-        if args.no_preserve == false {
-            if target == "/" || target == "~" {
-                println!("{} you're trying to delete an important directory ({})! specify '{}' if you really want to do this", "error:".red().bold(), "--no-preserve".yellow(), target);
-                process::exit(0);
-            }
+        if !args.no_preserve && (target == "/" || target == "~") {
+            println!("{} you're trying to delete an important directory ({})! specify '{}' if you really want to do this", "error:".red().bold(), "--no-preserve".yellow(), target);
+            process::exit(0);
         }
         
         if path::Path::new(target).exists() {
@@ -38,7 +36,7 @@ fn main() -> std::io::Result<()> {
                 let _ = fs::remove_file(target);
             }
         } else {
-            println!("{} {} {}", "error:".red().bold(), "the specified target does not exist:", target.yellow());
+            println!("{} the specified target does not exist {}", "error:".red().bold(), target.yellow());
         }
     }
 
