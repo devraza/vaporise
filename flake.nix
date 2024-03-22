@@ -44,7 +44,6 @@
         devShells.default = pkgs.mkShell rec {
           buildInputs = with pkgs; [
             (with toolchain; [ cargo rustc rust-src clippy rustfmt ])
-            mold clang
           ];
 
           # Specify the rust-src path (many editors rely on this)
