@@ -30,10 +30,9 @@
             inherit (toolchain) cargo rustc;
           })
           .buildRustPackage {
-            pname = "vaporise";
+            pname = "vpr";
             version = "0.2.1";
             cargoLock.lockFile = ./Cargo.lock;
-            meta.mainProgram = "vpr";
             src = ./.;
           };
 
