@@ -1,9 +1,5 @@
 {
   inputs = {
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     utils.url = "github:numtide/flake-utils";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
@@ -12,42 +8,22 @@
     self,
     nixpkgs-unstable,
     utils,
-    fenix,
     ...
   }:
     utils.lib.eachDefaultSystem
     (
       system: let
-        pkgs = import nixpkgs-unstable {
-          inherit system;
-          overlays = [fenix.overlays.default];
-        };
-        toolchain = pkgs.fenix.complete;
+        pkgs = import nixpkgs-unstable { inherit system; };
       in rec
       {
-        packages.default =
-          (pkgs.makeRustPlatform {
-            inherit (toolchain) cargo rustc;
-          })
-          .buildRustPackage {
-            pname = "vpr";
-            version = "0.2.1";
-            cargoLock.lockFile = ./Cargo.lock;
-            src = ./.;
-          };
-
+        packages.default = pkgs.rustPlatform.buildRustPackage {
+          pname = "vpr";
+          version = "0.2.1";
+          cargoLock.lockFile = ./Cargo.lock;
+          src = ./.;
+        };
         # Executed by `nix run`
         apps.default = utils.lib.mkApp {drv = packages.default;};
-
-        # Used by `nix develop`
-        devShells.default = pkgs.mkShell rec {
-          buildInputs = with pkgs; [
-            (with toolchain; [ cargo rustc rust-src clippy rustfmt ])
-          ];
-
-          # Specify the rust-src path (many editors rely on this)
-          RUST_SRC_PATH = "${toolchain.rust-src}/lib/rustlib/src/rust/library";
-        };
       }
     );
 }
