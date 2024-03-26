@@ -35,10 +35,10 @@ fn vaporise() -> Result<()> {
 
         if path::Path::new(target).exists() {
             if fs::metadata(target).unwrap().is_dir() {
-                let _ = fs::remove_dir_all(target)
+                fs::remove_dir_all(target)
                     .with_context(|| format!("could not remove directory: {}", target.bold()))?;
             } else {
-                let _ = fs::remove_file(target)
+                fs::remove_file(target)
                     .with_context(|| format!("could not remove file: {}", target.bold()))?;
             }
         } else {
