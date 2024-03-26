@@ -1,7 +1,7 @@
+use anyhow::{Context, Result};
 use clap::Parser;
 use colored::Colorize;
 use std::{fs, path, process};
-use anyhow::{Context, Result};
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None, author)]
@@ -26,7 +26,6 @@ fn vaporise() -> Result<()> {
         );
         process::exit(0);
     }
-
 
     for target in args.targets.iter() {
         if !args.no_preserve && (target == "/" || target == "~") {
