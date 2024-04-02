@@ -10,5 +10,4 @@ A list of features (or anything else relevant), currently implenented and *not* 
 - [X] User-friendly error handling
 - [X] Doesn't delete important directories by default (`/` or `~`)
 - [ ] Trashing files through a CLI argument
-- [ ] *Shredding* files as is done by `shred`
 - [ ] Prompting before every, or just the first, removal
