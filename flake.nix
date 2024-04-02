@@ -18,7 +18,7 @@
       {
         packages.default = pkgs.rustPlatform.buildRustPackage {
           pname = "vpr";
-          version = "0.2.2";
+          version = "0.3.0";
           cargoLock.lockFile = ./Cargo.lock;
           src = ./.;
         };
