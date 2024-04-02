@@ -81,7 +81,7 @@ fn vaporise() -> Result<()> {
             }
         } else {
             println!(
-                "{}: the specified target does not exist {}",
+                "{}: the specified target does not exist: {}",
                 "error".red().bold(),
                 target.yellow()
             );
