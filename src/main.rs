@@ -2,6 +2,7 @@ use anyhow::{Context, Result};
 use clap::Parser;
 use colored::Colorize;
 use std::{fs, path, process};
+use std::{io, io::Write};
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None, author)]
@@ -11,8 +12,37 @@ struct Args {
     #[arg(long)]
     no_preserve: bool,
 
+    /// Ask once before removing all
+    #[arg(short, long)]
+    ask_once: bool,
+
+    /// Ask before removing each target
+    #[arg(short = 'x', long, conflicts_with = "ask_once")]
+    ask_each: bool,
+
     #[arg(trailing_var_arg = true, allow_hyphen_values = false)]
     targets: Vec<String>,
+}
+
+fn confirm_parse() {
+    io::stdout().flush().unwrap();
+    
+    let mut confirm = String::new();
+    io::stdin().read_line(&mut confirm).expect("failed to read input");
+    
+    if confirm != "y\n" {
+        process::exit(0);
+    }
+}
+
+fn confirm_once() {
+    print!("Are you sure you want to delete the specified targets? [y/N]: ");
+    confirm_parse();
+}
+
+fn confirm_each(target: &String) {
+    print!("Are you sure you want to delete {}? [y/N]: ", target);
+    confirm_parse();
 }
 
 fn vaporise() -> Result<()> {
@@ -27,10 +57,18 @@ fn vaporise() -> Result<()> {
         process::exit(0);
     }
 
+    if args.ask_once {
+        confirm_once();
+    }
+
     for target in args.targets.iter() {
         if !args.no_preserve && (target == "/" || target == "~") {
             println!("{}: you're trying to delete an important directory ({})! specify '{}' if you really want to do this", "error".red().bold(), "--no-preserve".yellow(), target);
             process::exit(0);
+        }
+
+        if args.ask_each {
+            confirm_each(target);
         }
 
         if path::Path::new(target).exists() {
