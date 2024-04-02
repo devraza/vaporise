@@ -41,7 +41,7 @@ fn confirm_once() {
 }
 
 fn confirm_each(target: &String) {
-    print!("Are you sure you want to delete {}? [y/N]: ", target);
+    print!("Are you sure you want to delete {} ? [y/N]: ", target.bold());
     confirm_parse();
 }
 
