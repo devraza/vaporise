@@ -9,5 +9,5 @@ A list of features (or anything else relevant), currently implenented and *not* 
 - [X] Deleting files
 - [X] User-friendly error handling
 - [X] Doesn't delete important directories by default (`/` or `~`)
+- [X] Prompting before every, or just the first, removal
 - [ ] Trashing files through a CLI argument
-- [ ] Prompting before every, or just the first, removal
