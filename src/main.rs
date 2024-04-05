@@ -52,7 +52,7 @@ fn vaporise() -> Result<()> {
         println!("{}: no arguments passed", "error".red().bold());
         println!(
             "{}: try 'vpr -h' for more information",
-            "note".cyan().bold()
+            "note:".cyan().bold()
         );
         process::exit(0);
     }
@@ -63,7 +63,7 @@ fn vaporise() -> Result<()> {
 
     for target in args.targets.iter() {
         if !args.no_preserve && (target == "/" || target == "~") {
-            println!("{}: you're trying to delete an important directory ({})! specify '{}' if you really want to do this", "error".red().bold(), "--no-preserve".yellow(), target);
+            println!("{} you're trying to delete an important directory ({})! specify '{}' if you really want to do this", "error:".red().bold(), "--no-preserve".yellow(), target);
             process::exit(0);
         }
 
@@ -81,8 +81,8 @@ fn vaporise() -> Result<()> {
             }
         } else {
             println!(
-                "{}: the specified target does not exist: {}",
-                "error".red().bold(),
+                "{} the specified target does not exist: {}",
+                "error:".red().bold(),
                 target.yellow()
             );
         }
@@ -93,6 +93,6 @@ fn vaporise() -> Result<()> {
 
 fn main() {
     if let Err(error) = vaporise() {
-        println!("{}: {:?}", "error".red().bold(), error);
+        println!("{} {:?}", "error:".red().bold(), error);
     }
 }
