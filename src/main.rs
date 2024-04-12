@@ -61,9 +61,19 @@ fn vaporise() -> Result<()> {
         confirm_once();
     }
 
+
+    let root: &str;
+    if cfg!(windows) {
+        root = "C:\\";
+    } else if cfg!(unix) {
+        root = "/";
+    } else {
+        root = "N/A";
+    }
+
     for target in args.targets.iter() {
-        if !args.no_preserve && (target == "/" || target == "~") {
-            println!("{} you're trying to delete an important directory ({})! specify '{}' if you really want to do this", "error:".red().bold(), "--no-preserve".yellow(), target);
+        if !args.no_preserve && target == root {
+            println!("{} you're trying to delete the root directory ({})! specify '{}' if you really want to do this", "error:".red().bold(), "--no-preserve".yellow(), target);
             process::exit(0);
         }
 
