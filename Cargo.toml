@@ -1,6 +1,6 @@
 [package]
 name = "vaporise"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2021"
 authors = ["Muhammad Nauman Raza <devraza@skiff.com>"]
 description = "A simple, featureful and blazingly fast memory-safe alternative to 'rm' written in Rust."
