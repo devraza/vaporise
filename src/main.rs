@@ -36,12 +36,12 @@ fn confirm_parse() {
 }
 
 fn confirm_once() {
-    print!("Are you sure you want to delete the specified targets? [y/N]: ");
+    print!("Delete the specified targets? [y/N]: ");
     confirm_parse();
 }
 
 fn confirm_each(target: &String) {
-    print!("Are you sure you want to delete {} ? [y/N]: ", target.bold());
+    print!("Delete {} ? [y/N]: ", target.bold());
     confirm_parse();
 }
 
@@ -58,9 +58,13 @@ fn vaporise() -> Result<()> {
     }
 
     if args.ask_once {
+        println!();
+        for target in args.targets.iter() {
+            println!(" {}", target.bold());
+        }
+        println!();
         confirm_once();
     }
-
 
     let root: &str;
     if cfg!(windows) {
