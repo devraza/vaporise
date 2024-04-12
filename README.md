@@ -1,5 +1,5 @@
 # Vaporise
-Vaporise (`vpr`) is a simple, featureful and memory-safe alternative to the common `rm`, and is written in pure Rust.
+Vaporise (`vpr`) is a simple, featureful, fast, and memory-safe alternative to the common `rm`, written in pure Rust.
 
 > This project is relatively stable, and most of what I had planned in terms of features have been done.
 
