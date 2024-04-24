@@ -1,14 +1,14 @@
 # Vaporise
 Vaporise (`vpr`) is a simple, featureful, fast, and memory-safe alternative to the common `rm`, written in pure Rust.
 
-> This project is relatively stable, and most of what I had planned in terms of features have been done.
+> This project is relatively stable, and most of what I have planned in terms of features have been done.
 
 ## Installation
 
 To build `vaporise`, you'll need [Rust](https://rust-lang.org) installed:
 ```bash
-$ git clone https://git.devraza.duckdns.org/devraza/vaporise
-$ cd bunbun
+$ git clone https://git.devraza.giize.com/devraza/vaporise
+$ cd vaporise
 $ cargo build --release # `--release` adds a few optimisations
 ```
 
@@ -22,6 +22,5 @@ A list of features (or anything else relevant), currently implenented and *not* 
 - [X] Deleting directories
 - [X] Deleting files
 - [X] User-friendly error handling
-- [X] Doesn't delete `/` by default - **this is untested**
 - [X] Prompting before every, or just the first, removal
 - [ ] Trashing files through a CLI argument

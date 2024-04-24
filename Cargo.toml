@@ -1,9 +1,9 @@
 [package]
 name = "vaporise"
-version = "0.4.0"
+version = "0.5.0"
 edition = "2021"
-authors = ["Muhammad Nauman Raza <devraza@skiff.com>"]
-description = "A simple, featureful and blazingly fast memory-safe alternative to 'rm' written in Rust."
+authors = ["Muhammad Nauman Raza <devraza.hazard643@slmail.me>"]
+description = "A simple, featureful and fast alternative to 'rm' written in Rust."
 readme = "README.md"
 license = "MIT"
 
@@ -15,9 +15,9 @@ codegen-units = 1
 panic = "abort"
 
 [dependencies]
-anyhow = "1.0.82"
-clap = { version = "4.5.4", features = ["derive"] }
-colored = "2.1.0"
+anyhow = "1.0.86"
+clap = { version = "4.5.6", features = ["derive"] }
+owo-colors = "4.0.0"
 
 [[bin]]
 name = "vpr"
