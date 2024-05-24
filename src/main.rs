@@ -26,10 +26,12 @@ struct Args {
 
 fn confirm_parse() {
     io::stdout().flush().unwrap();
-    
+
     let mut confirm = String::new();
-    io::stdin().read_line(&mut confirm).expect("failed to read input");
-    
+    io::stdin()
+        .read_line(&mut confirm)
+        .expect("failed to read input");
+
     if confirm != "y\n" {
         process::exit(0);
     }
