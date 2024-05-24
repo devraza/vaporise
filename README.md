@@ -7,7 +7,7 @@ Vaporise (`vpr`) is a simple, featureful, fast, and memory-safe alternative to t
 
 To build `vaporise`, you'll need [Rust](https://rust-lang.org) installed:
 ```bash
-$ git clone https://git.devraza.duckdns.org/devraza/vaporise
+$ git clone https://git.devraza.giize.com/devraza/vaporise
 $ cd bunbun
 $ cargo build --release # `--release` adds a few optimisations
 ```
