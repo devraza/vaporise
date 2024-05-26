@@ -62,7 +62,7 @@ fn vaporise() -> Result<()> {
     if args.ask_once {
         println!();
         for target in args.targets.iter() {
-            println!(" {}", target.bold());
+            println!("  {}", target.bold());
         }
         println!();
         confirm_once();
