@@ -17,7 +17,7 @@ panic = "abort"
 [dependencies]
 anyhow = "1.0.86"
 clap = { version = "4.5.4", features = ["derive"] }
-colored = "2.1.0"
+owo-colors = "4.0.0"
 
 [[bin]]
 name = "vpr"

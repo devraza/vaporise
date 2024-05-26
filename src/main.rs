@@ -1,6 +1,6 @@
 use anyhow::{Context, Result};
 use clap::Parser;
-use colored::Colorize;
+use owo_colors::OwoColorize;
 use std::{fs, path, process};
 use std::{io, io::Write};
 
