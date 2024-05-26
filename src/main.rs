@@ -51,9 +51,9 @@ fn vaporise() -> Result<()> {
     let args = Args::parse();
 
     if args.targets.is_empty() {
-        println!("{}: no arguments passed", "error".red().bold());
+        println!("{} no arguments passed", "error:".red().bold());
         println!(
-            "{}: try 'vpr -h' for more information",
+            "{} try 'vpr -h' for more information",
             "note:".cyan().bold()
         );
         process::exit(0);
