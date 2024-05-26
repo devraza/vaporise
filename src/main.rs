@@ -8,10 +8,6 @@ use std::{io, io::Write};
 #[command(version, about, long_about = None, author)]
 /// A simple, featureful and blazingly fast memory-safe alternative to 'rm' written in Rust.
 struct Args {
-    /// Don't try to preserve '~' or '/'
-    #[arg(long)]
-    no_preserve: bool,
-
     /// Ask once before removing all
     #[arg(short, long)]
     ask_once: bool,
@@ -68,21 +64,7 @@ fn vaporise() -> Result<()> {
         confirm_once();
     }
 
-    let root: &str;
-    if cfg!(windows) {
-        root = "C:\\";
-    } else if cfg!(unix) {
-        root = "/";
-    } else {
-        root = "N/A";
-    }
-
     for target in args.targets.iter() {
-        if !args.no_preserve && target == root {
-            println!("{} you're trying to delete the root directory ({})! specify '{}' if you really want to do this", "error:".red().bold(), "--no-preserve".yellow(), target);
-            process::exit(0);
-        }
-
         if args.ask_each {
             confirm_each(target);
         }
