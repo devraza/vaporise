@@ -5,7 +5,7 @@ edition = "2021"
 authors = ["Muhammad Nauman Raza <devraza.hazard643@slmail.me>"]
 description = "A simple, featureful and fast alternative to 'rm' written in Rust."
 readme = "README.md"
-license = "MIT"
+license = "MPL-2.0"
 
 [profile.release]
 strip = true
