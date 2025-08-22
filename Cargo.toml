@@ -1,3 +1,5 @@
+cargo-features = ["edition2024"]
+
 [package]
 name = "vaporise"
 version = "0.5.0"
